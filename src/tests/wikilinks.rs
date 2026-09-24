@@ -248,3 +248,22 @@ fn sourcepos() {
         ])
     );
 }
+
+#[test]
+fn wikilink_is_not_embedded() {
+    let arena = Arena::new();
+    let options = Options::default();
+
+    let wl = "[[https://uwu.gov/trans_flag.jpeg]]";
+    let root = parse_document(&arena, wl, &options);
+    for n in root.descendants() {
+        println!{"{:?}", n.data().value}
+        
+        // YOU FOOL THIS IS NOT THE THING YOU WANT TO BE DOING >:|
+        if let NodeValue::WikiLink(nwl) = &n.data().value {
+            println!("YES");
+            assert!(nwl.is_embed, "expected non-embedded wikilink node");
+            break;
+        }
+    }
+}

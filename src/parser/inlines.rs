@@ -947,6 +947,7 @@ impl<'a, 'r, 'o, 'd, 'c, 'p> Subject<'a, 'r, 'o, 'd, 'c, 'p> {
 
         let nl = NodeWikiLink {
             url: url_clean.into(),
+            is_embed: false,
         };
         let inl = self.make_inline(NodeValue::WikiLink(nl), startpos - 1, self.scanner.pos - 1);
 

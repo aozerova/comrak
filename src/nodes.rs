@@ -352,6 +352,8 @@ pub struct NodeLink {
 pub struct NodeWikiLink {
     /// The URL for the link destination.
     pub url: String,
+    /// The flag determining if the link is an embed or not.
+    pub is_embed: bool,
 }
 
 /// The metadata of a list; the kind of list, the delimiter used and so on.
